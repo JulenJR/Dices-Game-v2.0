@@ -16,6 +16,8 @@ import { AuthenticationServiceJWT } from "./authentication/AuthenticationService
 import { GameService } from "./service/GameService";
 import { PlayerService } from "./service/PlayerService";
 
+const MONGO_URI : string = "mongodb+srv://dbuser:dbuserpp@atlascluster.ccvayit.mongodb.net/";
+
 export class Server {
     private readonly express: express.Express;
     private readonly port: string;
@@ -157,7 +159,7 @@ export class Server {
 
   async listen(): Promise<void> {
     // Connect to MongoDB
-    await mongoose.connect("mongodb+srv://dbuser:dbuserpp@atlascluster.ccvayit.mongodb.net/", {})
+    await mongoose.connect(MONGO_URI, {})
       .then(() => {
         console.log("✅ Connected to MongoDB");
       })
