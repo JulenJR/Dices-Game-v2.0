@@ -10,6 +10,8 @@ The database also saves the rounds played for each player/user and calculates a 
 
 This GitHub Actions workflow automatically builds and tests the application when code changes are pushed to the master branch or a pull request targeting the master branch is opened or synchronized.
 
+⚠️ ⚠️ ⚠️ change the MONGO_URI in Server.ts to your mongoDB URI ⚠️ ⚠️ ⚠️
+
 
 ### 🎲 Endpoints
    ``` POST /login ```: checks if the user is in the database and returns a JWT token.
