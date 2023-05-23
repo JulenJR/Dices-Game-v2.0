@@ -1,3 +1,4 @@
+/* eslint-disable*/
 import { Server } from "./Server";
 
 export class App {
@@ -6,7 +7,9 @@ export class App {
 	async start(): Promise<void> {
 		const port = process.env.PORT ?? "8000";
 		this.server = new Server(port);
+		
 
 		await this.server.listen();
+		this.server.start();
 	}
 }
