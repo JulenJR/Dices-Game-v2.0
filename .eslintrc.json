@@ -1,6 +1,6 @@
 {
     "parser": "@typescript-eslint/parser",
-    "extends": [ "eslint-config-codely/typescript" ],
+    "extends": [  "eslint:recommended" ],
     "env": {
       "node": true
     },
