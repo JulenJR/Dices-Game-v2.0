@@ -144,7 +144,6 @@ src
 └── backend
     ├── domain
     │   ├── Game.ts
-    │   ├── GameRound.ts
     │   └── Player.ts
     ├── repository
     │   ├── GameRepository.ts
