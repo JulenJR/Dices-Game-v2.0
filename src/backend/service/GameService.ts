@@ -3,7 +3,7 @@ import { Game, GameRound } from "../domain/Game";
 
 export interface GameService {
   playRound(playerId: string): Promise<string>;
-  getRoundsByPlayerId(playerId: string): Promise<GameRound[] | null>;
+  getRoundsByPlayerId(playerId: string): Promise<Game[] | null>;
   deleteGamesByPlayerId(playerId: string): Promise<void>;
   getRanking(): Promise<any[]>;
   getWinner(): Promise<any>;

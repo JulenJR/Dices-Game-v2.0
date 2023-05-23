@@ -37,7 +37,7 @@ export class GameServiceImplementation implements GameService {
     }
   }
 
-  async getRoundsByPlayerId(playerId: string): Promise<GameRound[] | null> {
+  async getRoundsByPlayerId(playerId: string): Promise<Game[] | null> {
     const rounds = await this.gameRepository.findByPlayer(playerId);
     return rounds;
   }
@@ -50,15 +50,16 @@ export class GameServiceImplementation implements GameService {
     const players = await this.playerRepository.findAll();
     const ranking = await Promise.all(
       players.map(async (player) => {
-        const rounds = await this.gameRepository.findByPlayer(player.id);
-        const wins = rounds?.filter((round) => round.result === 7).length;
-        const winRate = ((wins ?? 0) / (rounds?.length ?? 1)) * 100;
+        const games = await this.gameRepository.findByPlayer(player.id);
+        const wins = games?.flatMap((game) => game.rounds ?? []).filter((round) => round.result === 7).length ?? 0;
+        const winRate = (wins / (games?.length ?? 1)) * 100;
         return { player: player.id, winRate };
       })
     );
     const sortedRanking = ranking.sort((a, b) => b.winRate - a.winRate);
     return sortedRanking;
   }
+  
   
 
   async getWinner(): Promise<any> {

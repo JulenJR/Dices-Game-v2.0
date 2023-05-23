@@ -44,12 +44,13 @@ export class PlayerServiceImplementation implements PlayerService {
   async getPlayersWithWinRates(): Promise<any[]> {
     const players = await this.playerRepository.findAll();
     const winRatesPromises = players.map(async (player) => {
-      const rounds = await this.gameRepository.findByPlayer(player.id);
-      const wins = rounds?.filter((round) => round.result === 7).length;
-      const winRate = ((wins ?? 0) / (rounds?.length ?? 1)) * 100;
+      const games = await this.gameRepository.findByPlayer(player.id);
+      const rounds = games ? games.flatMap((game) => game.rounds ?? []) : [];
+      const wins = rounds.filter((round) => round.result === 7).length;
+      const winRate = games ? (wins / rounds.length) * 100 : 0;
       return { player: player.id, winRate };
     });
-
+  
     const winRates = await Promise.all(winRatesPromises);
     return winRates;
   }

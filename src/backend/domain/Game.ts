@@ -3,8 +3,8 @@ export interface Game {
     rounds: GameRound[];
   }
   
-  export interface GameRound {
-    player: string;
-    result: number;
-  }
+export interface GameRound {
+  player: string;
+  result: number;
+}
   

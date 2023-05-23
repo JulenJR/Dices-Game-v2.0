@@ -25,7 +25,8 @@ export class PlayerRepositoryMongoDB implements PlayerRepository {
   }
 
   async findAll(): Promise<Player[]> {
-    return this.PlayerModel.find().exec();
+    const players = await this.PlayerModel.find();
+    return players;
   }
 
   async exists(id: string): Promise<boolean> {
@@ -40,5 +41,11 @@ export class PlayerRepositoryMongoDB implements PlayerRepository {
   async delete(id: string): Promise<void> {
     await this.PlayerModel.deleteOne({ id });
   }
+
+  async findByCredentials(id: string, password: string): Promise<Player | null> {
+    const player = await this.PlayerModel.findOne({ id, password });
+    return player;
+  }
 }
+
 

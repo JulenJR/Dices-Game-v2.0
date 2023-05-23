@@ -28,9 +28,18 @@ export class GameRepositoryMongoDB implements GameRepository {
     await this.GameModel.create(game);
   }
 
-  async findByPlayer(playerId: string): Promise<Game | null> {
-    const game = await this.GameModel.findOne({ player: playerId });
-    return game;
+  async findByPlayer(playerId: string): Promise<GameRound[] | null> {
+    const games = await this.GameModel.find({ player: playerId });
+  
+    if (games) {
+      const gameRounds = games.map((game) => {
+        const { _id, result } = game;
+        return { _id: _id.toString(), player: playerId, result };
+      });
+      return gameRounds;
+    }
+  
+    return null;
   }
 
   async addRound(playerId: string, round: GameRound): Promise<void> {
