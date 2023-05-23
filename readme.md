@@ -8,9 +8,10 @@ It works with a mongoDB database where you can create a USER with a username and
 
 The database also saves the rounds played for each player/user and calculates a winrate overall the results of the player list.
 
+⚠️ ⚠️ ⚠️ change the MONGO_URI in Server.ts to your mongoDB URI ⚠️ ⚠️ ⚠️
+
 This GitHub Actions workflow automatically builds and tests the application when code changes are pushed to the master branch or a pull request targeting the master branch is opened or synchronized.
 
-⚠️ ⚠️ ⚠️ change the MONGO_URI in Server.ts to your mongoDB URI ⚠️ ⚠️ ⚠️
 
 
 ### 🎲 Endpoints
@@ -61,6 +62,8 @@ npm run dev
 Then, open http://localhost:8000 to access the server.
 
 Try the requests using POSTMAN tho.
+
+⚠️ ⚠️ ⚠️ change the MONGO_URI in Server.ts to your mongoDB URI ⚠️ ⚠️ ⚠️
 
 
 ### 🚀 Production
