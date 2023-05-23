@@ -44,7 +44,7 @@ This GitHub Actions workflow automatically builds and tests the application when
 To get started with this template, you first need to clone the repository:
 
 ```bash
-git clone https://github.com/AraManjon/typescript-tdd-template.git
+git clone https://github.com/JulenJR/Dices-Game-v2.0
 ```
 
 Then, install the project dependencies:
