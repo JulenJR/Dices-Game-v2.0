@@ -1,12 +1,40 @@
-# 🦋 TypeScript TDD Template
+# Request practice with <a href="https://nodejs.org"><img height=48 src="https://raw.githubusercontent.com/caiogondim/javascript-server-side-logos/master/node.js/standard/454x128.png"></a> express
 
-⚡ Start your Node.js project with Typescript using Test Driven Development (TDD) practices.
+### 🛄 Description
 
-### 📋 GitHub Actions Workflow:
+In this project we're runing a Dices Game where you can roll with TWO dices and you win if the result equals 7.
 
-[![🏠 Build](https://github.com/AraManjon/typescript-tdd-template/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/AraManjon/typescript-tdd-template/actions/workflows/build.yml)
+It works with a mongoDB database where you can create a USER with a username and password in the body of POST request to the endpoint /player. 
+
+The database also saves the rounds played for each player/user and calculates a winrate overall the results of the player list.
 
 This GitHub Actions workflow automatically builds and tests the application when code changes are pushed to the master branch or a pull request targeting the master branch is opened or synchronized.
+
+
+### 🎲 Endpoints
+   ``` POST /login ```: checks if the user is in the database and returns a JWT token.
+   
+   ``` POST /player```: adds a new player to the database with an id and a password.
+   
+   ``` GET /players ```: returns all the players in the database with their winrate.
+   
+   ``` PUT /player/:id```: change the name of the user where the body has to have a "newId" : "newUserName".
+   
+   ``` POST /games/:id```: play a round with the user setted in the endpoint :id.
+   
+   ``` GET /games/:id```: show all the rounds played by the user at the endpoint :id.
+   
+   ``` DELETE /games/:id```: delete all the rounds from a user :id.
+   
+   ``` GET /ranking```: display all the players sorted by winrate of the player.
+   
+   ``` GET /ranking/winner```: shows the player with highest winrate.
+   
+   ``` GET /ranking/loser```: show the player with the lowest winrate.
+   
+     
+
+
 
 ### 📥 Installation
 
@@ -29,6 +57,8 @@ To start the server in development mode, run the following script:
 npm run dev
 ```
 Then, open http://localhost:8000 to access the server.
+
+Try the requests using POSTMAN tho.
 
 
 ### 🚀 Production
@@ -107,35 +137,27 @@ This project comes with several predefined scripts in the package.json file:
 
 ### 🗂️ Folder structure
 
-In this folder structure, the code is organized according to the principles of Hexagonal Architecture. 
+In this folder structure, the code is organized according to the principles of Hexagonal Architecture. Kind of.
 
 ```
-src/
-├── backend
-│   ├── middlewares
-│   ├── App.ts
-│   ├── server.start.ts
-│   └── Server.ts
-├── shared
-│   ├── utils
-│   ├── domain
-│   └── infrastructure
-│       ├── config
-│       └── persistence
-└── user
-    ├── application
-    │   ├── services
-    │   └── use-cases
+src
+└── backend
     ├── domain
-    │   ├── entities
-    │   └── repositories
-    └── infrastructure
-        ├── controllers
-        ├── repositories
-        ├── routes
-        ├── services
-        └── UserModule.ts
+    │   ├── Game.ts
+    │   └── Player.ts
+    ├── repository
+    │   ├── GameRepository.ts
+    │   ├── GameRepositoryMongoDB.ts
+    │   ├── PlayerRepository.ts
+    │   └── PlayerRepositoryMongoDB.ts
+    ├── service
+    │   ├── GameService.ts
+    │   ├── GameServiceImplementation.ts
+    │   ├── PlayerService.ts
+    │   └── PlayerServiceImplementation.ts
+    ├── authentication
+    │   └── AuthenticationServiceJWT.ts
+    ├── Server.ts
+    ├── app.ts
+    └── server.start.ts
 ```
-
-
-
