@@ -58,6 +58,8 @@ npm run dev
 ```
 Then, open http://localhost:8000 to access the server.
 
+Try the requests using POSTMAN tho.
+
 
 ### 🚀 Production
 
