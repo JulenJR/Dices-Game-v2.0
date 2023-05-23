@@ -18,24 +18,25 @@ export class GameServiceImplementation implements GameService {
     if (!player) {
       throw new Error("Player not found");
     }
-
+  
     const dice1 = Math.floor(Math.random() * 6) + 1;
     const dice2 = Math.floor(Math.random() * 6) + 1;
     const result = dice1 + dice2;
-
+  
     const round: GameRound = {
       player: playerId,
       result: result
     };
-
-    await this.gameRepository.create(playerId, round);
-
+  
+    await this.gameRepository.addRound(playerId, round);
+  
     if (result === 7) {
       return `${dice1} + ${dice2} = ${result}: You won the game!`;
     } else {
       return `${dice1} + ${dice2} = ${result}: Better luck next time :c`;
     }
   }
+  
 
   async getRoundsByPlayerId(playerId: string): Promise<Game[] | null> {
     const rounds = await this.gameRepository.findByPlayer(playerId);

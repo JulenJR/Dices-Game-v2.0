@@ -28,15 +28,14 @@ export class GameRepositoryMongoDB implements GameRepository {
     await this.GameModel.create(game);
   }
 
-  async findByPlayer(playerId: string): Promise<GameRound[] | null> {
+  async findByPlayer(playerId: string): Promise<Game[] | null> {
     const games = await this.GameModel.find({ player: playerId });
   
     if (games) {
-      const gameRounds = games.map((game) => {
-        const { _id, result } = game;
-        return { _id: _id.toString(), player: playerId, result };
+      return games.map((game) => {
+        const { id, rounds } = game;
+        return { id: id.toString(), player: playerId, rounds };
       });
-      return gameRounds;
     }
   
     return null;
@@ -49,6 +48,7 @@ export class GameRepositoryMongoDB implements GameRepository {
       { upsert: true }
     );
   }
+   
 
   async deleteByPlayerId(playerId: string): Promise<void> {
     await this.GameModel.deleteMany({ player: playerId });

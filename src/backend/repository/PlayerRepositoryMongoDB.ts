@@ -47,5 +47,3 @@ export class PlayerRepositoryMongoDB implements PlayerRepository {
     return player;
   }
 }
-
-

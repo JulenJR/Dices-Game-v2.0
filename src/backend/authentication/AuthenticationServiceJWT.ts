@@ -21,3 +21,4 @@ export class AuthenticationServiceJWT implements AuthenticationService {
     return token;
   }
 }
+
