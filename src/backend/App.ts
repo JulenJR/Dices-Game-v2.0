@@ -10,6 +10,5 @@ export class App {
 		
 
 		await this.server.listen();
-		this.server.start();
 	}
 }
