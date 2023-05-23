@@ -3,8 +3,11 @@
 ### 🛄 Description
 
 In this project we're runing a Dices Game where you can roll with TWO dices and you win if the result equals 7.
+
 It works with a mongoDB database where you can create a USER with a username and password in the body of POST request to the endpoint /player. 
+
 The database also saves the rounds played for each player/user and calculates a winrate overall the results of the player list.
+
 This GitHub Actions workflow automatically builds and tests the application when code changes are pushed to the master branch or a pull request targeting the master branch is opened or synchronized.
 
 
