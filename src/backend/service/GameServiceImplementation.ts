@@ -52,24 +52,30 @@ export class GameServiceImplementation implements GameService {
     const ranking = await Promise.all(
       players.map(async (player) => {
         const games = await this.gameRepository.findByPlayer(player.id);
-        const wins = games?.flatMap((game) => game.rounds ?? []).filter((round) => round.result === 7).length ?? 0;
-        const winRate = (wins / (games?.length ?? 1)) * 100;
+        const rounds = games?.flatMap((game) => game.rounds ?? []);
+        const wins = rounds?.filter((round) => round.result === 7).length ?? 0;
+        const totalRounds = rounds?.length ?? 0;
+        const winRate = totalRounds > 0 ? (wins / totalRounds) * 100 : 0;
         return { player: player.id, winRate };
       })
     );
+
     const sortedRanking = ranking.sort((a, b) => b.winRate - a.winRate);
     return sortedRanking;
   }
-  
-  
 
-  async getWinner(): Promise<any> {
+  async getWinner(): Promise<any[]> {
     const ranking = await this.getRanking();
-    return ranking[0];
+    const highestWinRate = ranking[0].winRate;
+    const winners = ranking.filter((player) => player.winRate === highestWinRate);
+    return winners;
   }
-
-  async getLoser(): Promise<any> {
+  
+  async getLoser(): Promise<any[]> {
     const ranking = await this.getRanking();
-    return ranking[ranking.length - 1];
+    const lowestWinRate = ranking[ranking.length - 1].winRate;
+    const losers = ranking.filter((player) => player.winRate === lowestWinRate);
+    return losers;
   }
+  
 }
