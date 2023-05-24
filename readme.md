@@ -169,9 +169,9 @@ src
  ┃ ┣ server.start.ts
  ┃ ┗ Server.ts
  ┗ user
- ┃ ┣ domain
- ┃ ┃ ┗ entities
- ┃ ┃ ┃ ┗ User.ts
- ┃ ┗ infrastructure
+   ┣ domain
+   ┃ ┗ entities
+   ┃ ┃ ┗ User.ts
+   ┗ infrastructure
      ┗ UserModule.ts
 ```
