@@ -76,6 +76,5 @@ export class GameServiceImplementation implements GameService {
     const lowestWinRate = ranking[ranking.length - 1].winRate;
     const losers = ranking.filter((player) => player.winRate === lowestWinRate);
     return losers;
-  }
-  
+  }  
 }
