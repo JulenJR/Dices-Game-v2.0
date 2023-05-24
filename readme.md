@@ -146,23 +146,32 @@ In this folder structure, the code is organized according to the principles of H
 
 ```
 src
-└── backend
-    ├── domain
-    │   ├── Game.ts
-    │   └── Player.ts
-    ├── repository
-    │   ├── GameRepository.ts
-    │   ├── GameRepositoryMongoDB.ts
-    │   ├── PlayerRepository.ts
-    │   └── PlayerRepositoryMongoDB.ts
-    ├── service
-    │   ├── GameService.ts
-    │   ├── GameServiceImplementation.ts
-    │   ├── PlayerService.ts
-    │   └── PlayerServiceImplementation.ts
-    ├── authentication
-    │   └── AuthenticationServiceJWT.ts
-    ├── Server.ts
-    ├── app.ts
-    └── server.start.ts
+ ┣ backend
+ ┃ ┣ authentication
+ ┃ ┃ ┣ AuthenticationService.ts
+ ┃ ┃ ┗ AuthenticationServiceJWT.ts
+ ┃ ┣ domain
+ ┃ ┃ ┣ Game.ts
+ ┃ ┃ ┗ Player.ts
+ ┃ ┣ repository
+ ┃ ┃ ┣ GameRepository.ts
+ ┃ ┃ ┣ GameRepositoryMongoDB.ts
+ ┃ ┃ ┣ PlayerRepository.ts
+ ┃ ┃ ┗ PlayerRepositoryMongoDB.ts
+ ┃ ┣ service
+ ┃ ┃ ┣ AppService.ts
+ ┃ ┃ ┣ AuthenticationService.ts
+ ┃ ┃ ┣ GameService.ts
+ ┃ ┃ ┣ GameServiceImplementation.ts
+ ┃ ┃ ┣ PlayerService.ts
+ ┃ ┃ ┗ PlayerServiceImplementation.ts
+ ┃ ┣ App.ts
+ ┃ ┣ server.start.ts
+ ┃ ┗ Server.ts
+ ┗ user
+ ┃ ┣ domain
+ ┃ ┃ ┗ entities
+ ┃ ┃ ┃ ┗ User.ts
+ ┃ ┗ infrastructure
+     ┗ UserModule.ts
 ```
