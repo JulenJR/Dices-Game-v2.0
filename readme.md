@@ -85,6 +85,11 @@ npm start
 This will start the server and make it available at http://localhost:8000.
 
 
+### POSTMAN
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/27300175-2d8524f1-ea5f-445e-a557-ca8108f15d59?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D27300175-2d8524f1-ea5f-445e-a557-ca8108f15d59%26entityType%3Dcollection%26workspaceId%3D350d3429-33bd-43c1-83b0-c89fe9c3b9a2)
+
+
 ### 🏗️ Scripts
 This project comes with several predefined scripts in the package.json file:
 
